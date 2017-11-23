@@ -3,31 +3,33 @@ export default {
     name: 'Employee',
     data() {
         return {
-            formtitle: 'Employee Form',
+            employee: {
+                id: 0,
+                fname: '',
+                lname: '',
+                job: '',
+                income: 0
+            },
+            formtitle: 'Form',
             tabletitle: 'Employee Table',
             employeeList: [],
             tableClass: 'unstriped',
-            id: 0,
-            fname: '',
-            lname: '',
-            job: '',
-            income: 0
         }    
     },
+    computed:{
+        updateTitle(){
+            return 'Employees ' + this.formtitle;
+        }
+    },
+    
     methods: {
-        addEmployee: function(){
-            this.employeeList.push({
-                id: this.id++,
-                fname: this.fname,
-                lname: this.lname,
-                job: this.job,
-                income: this.income
-            });
-
-                this.fname  = '';
-                this.lname = '';
-                this.job = '';
-                this.income = '';
+        addEmployee(){
+            this.employee.id  =`EK${this.employeeList.length + 1}`;
+            this.employeeList.push(this.employee);
+            this.employee = {};
+        },
+        netIncome(income){
+            return Math.round(income * 85) / 100;
         }
     }
 }
@@ -35,32 +37,33 @@ export default {
 
 <template>
     <div class="grid-container">
-        <h3>{{ formtitle }}</h3>
+        <h4>{{ updateTitle }}</h4>
         <div class="grid-x grid-margin-x align-center">
             
             <div class="medium-6 cell">
-                First Name<input type="text" v-model="fname">
-                Last Name<input type="text" v-model="lname">
+                First Name<input type="text" v-model="employee.fname">
+                Last Name<input type="text" v-model="employee.lname">
             </div>
 
             <div class="medium-6 cell">
-            Job<select v-model="job">
+            Job<select v-model="employee.job">
                     <option value="Developer">Developer</option>
                     <option value="Operator">Operator</option>
                     <option value="Manager">Manager</option>
                     <option value="Technician">Technician</option>
                     <option value="Advisor">Advisor</option>
                 </select>
-                Income<input type="number" v-model="income">
+                Income<input type="number" v-model="employee.income">
             </div>
             
             <button class="button" type="button" @click="addEmployee">Add</button>
         </div>
         
+        <template v-if="employeeList.length >= 1">
         <div class="grid-x grid-margin-x">
-            <h3>{{ tabletitle }}</h3>
+            <h4>{{ tabletitle }}</h4>
             <div class="cell">
-                <table v-bind:class="">
+                <table v-bind:class="tableClass">
                     <thead>
                         <tr>
                             <td>ID</td>
@@ -76,12 +79,16 @@ export default {
                             <td>{{ employee.fname }} {{ employee.lname}}</td>
                             <td>{{ employee.job }}</td>
                             <td>{{ employee.income}}</td>
-                            <td>{{ employee.income * 0.85 }}</td>
+                            <td>{{ netIncome(employee.income) }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
+        </template>
+        
+        
   </div>
 
 </template>

@@ -1,21 +1,22 @@
-# vueapp
+# VueJS Basics
 
-> A Vue.js project
+## Part I
 
-## Build Setup
+- Installation
+- Introduction
+- The Vue Instance
+- Template Syntax
+- Class and Style Bindings
+- Form Input Bindings
 
-``` bash
-# install dependencies
-npm install
+## Part II
 
-# serve with hot reload at localhost:8080
-npm run dev
+- Conditional Rendering
+- Computed Properties and Watchers
+- List Rendering
+- Event Handling
 
-# build for production with minification
-npm run build
+### Resources
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+<https://vuejs.org/v2/guide/>
+<https://laracasts.com/series/learn-vue-2-step-by-step>
