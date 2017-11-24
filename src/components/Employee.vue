@@ -61,8 +61,9 @@ export default {
         
         <template v-if="employeeList.length >= 1">
         <div class="grid-x grid-margin-x">
-            <h4>{{ tabletitle }}</h4>
+            
             <div class="cell">
+                <h4>{{ tabletitle }}</h4>
                 <table v-bind:class="tableClass">
                     <thead>
                         <tr>
