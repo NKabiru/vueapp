@@ -1,14 +1,15 @@
 <template>
   <div class="top-bar">
     <div class="top-bar-left">
-        <span><router-link :to="{name: 'Home'}" >{{ title }}</router-link></span>
-        <span><router-link :to="{name: 'Employee'}">Employees</router-link></span>
-        <span><router-link :to="{name: 'About'}">About</router-link></span>
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><router-link :to="{name: 'Home'}"><strong>EMS</strong></router-link></li>
+            <li><router-link :to="{name: 'Employee'}">Employees</router-link></li>
+            <li><router-link :to="{name: 'About'}">About</router-link></li>
+        </ul>
     </div>
     <div class="top-bar-right">
       <ul class="menu">
-        <li><input type="text" placeholder="Search"/></li>
-        <li><button class="button" @click="search">Search</button></li>
+        <li><button class="button" @click="logout">Logout</button></li>
       </ul>
     </div>
   </div>
@@ -17,19 +18,17 @@
 <script>
 export default {
   name: 'Navbar',
-  data(){
-      return {
-          title: 'EMS'
-      }
-  },
     methods: {
-      search(){
-          console.log("Search button clicked");
+      logout(){
+          console.log("Logout button clicked");
       }
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+    ul li {
+        color: #000 !important;
+        text-decoration: none !important;
+    }
 </style>

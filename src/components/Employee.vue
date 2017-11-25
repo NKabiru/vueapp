@@ -1,32 +1,37 @@
 <script>
+var mixin = {
+    methods: {
+        addEmployee(){
+            this.employee.id  =`EK${this.employeeList.length + 1}`;
+            this.employeeList.push(this.employee);
+            this.employee = {};
+        }
+    }
+    };
 export default {
     name: 'Employee',
     data() {
         return {
-            employee: {
-                id: 0,
-                fname: '',
-                lname: '',
-                job: '',
-                income: 0
-            },
+            employee: {},
             formtitle: 'Form',
             tabletitle: 'Employee Table',
             employeeList: [],
             tableClass: 'unstriped',
         }    
     },
+    mixins: [mixin],
     computed:{
         updateTitle(){
             return 'Employees ' + this.formtitle;
         }
     },
-    
     methods: {
-        addEmployee(){
-            this.employee.id  =`EK${this.employeeList.length + 1}`;
-            this.employeeList.push(this.employee);
-            this.employee = {};
+        employeeNumber(){
+            console.log(this.employeeList.length);
+        },
+        added(){
+            console.log('New employee added');
+            this.$emit('added');
         },
         netIncome(income){
             return Math.round(income * 85) / 100;
@@ -36,31 +41,25 @@ export default {
 </script>
 
 <template>
-    <div class="grid-container">
+    <div>
         <h4>{{ updateTitle }}</h4>
         <div class="grid-x grid-margin-x align-center">
-            
-            <div class="medium-6 cell">
+            <div class="large-auto cell">
                 First Name<input type="text" v-model="employee.fname">
                 Last Name<input type="text" v-model="employee.lname">
-            </div>
-
-            <div class="medium-6 cell">
-            Job<select v-model="employee.job">
-                    <option value="Developer">Developer</option>
-                    <option value="Operator">Operator</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Technician">Technician</option>
-                    <option value="Advisor">Advisor</option>
-                </select>
+                Job<select v-model="employee.job">
+                <option value="Developer">Developer</option>
+                <option value="Operator">Operator</option>
+                <option value="Manager">Manager</option>
+                <option value="Technician">Technician</option>
+                <option value="Advisor">Advisor</option>
+            </select>
                 Income<input type="number" v-model="employee.income">
+                <button class="button" type="button" @click="addEmployee" :added="employeeNumber">Add</button>
             </div>
-            
-            <button class="button" type="button" @click="addEmployee">Add</button>
         </div>
-        
         <template v-if="employeeList.length >= 1">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x align-center">
             
             <div class="cell">
                 <h4>{{ tabletitle }}</h4>
@@ -88,8 +87,6 @@ export default {
         </div>
 
         </template>
-        
-        
   </div>
 
 </template>
