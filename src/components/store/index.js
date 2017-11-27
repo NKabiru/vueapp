@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state:{
         employees:[
-            {id: 'EK0', fname: 'John', lname: 'Doe', job: 'Developer', income: 12345 }
+            {id: 'EK1', fname: 'John', lname: 'Doe', job: 'Developer', income: 12345 }
             ]
     },
 

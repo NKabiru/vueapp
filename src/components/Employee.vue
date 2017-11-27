@@ -34,7 +34,7 @@
                     <thead>
                         <tr>
                             <td>ID</td>
-                            <td>NameS</td>
+                            <td>Name</td>
                             <td>Occupation</td>
                             <td>Gross Income</td>
                             <td>Net Income</td>
