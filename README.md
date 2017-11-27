@@ -24,8 +24,17 @@
 - Dynamic components
 - Single Page Components
 
+## State Management
+- Vuex
+- State
+- Stores
+- Mutations
+- Getters/Setters
+
 ## Resources
 
 <https://vuejs.org/v2/guide/>
 
 <https://laracasts.com/series/learn-vue-2-step-by-step>
+
+<https://vuex.vuejs.org/en/getting-started.html>
