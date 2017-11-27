@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state:{
         employees:[
-            {id: 'EK1', fname: 'John', lname: 'Doe', job: 'Developer', income: 12345 }
+            {id: 'EK0', fname: 'John', lname: 'Doe', job: 'Developer', income: 12345 }
             ]
     },
 
@@ -27,6 +27,15 @@ export const store = new Vuex.Store({
     },
 
     mutations:{
-
+        addEmployee: (state, employee) => {
+            var newEmployee = state.employees.push({
+                id: employee.id,
+                fname: employee.fname,
+                lname: employee.lname,
+                job: employee.job,
+                income: employee.income
+            });
+            return newEmployee;
+        }
     }
 })

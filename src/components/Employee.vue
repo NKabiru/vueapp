@@ -62,7 +62,8 @@
         methods: {
             addEmployee(){
                 this.employee.id  =`EK${this.employeeList.length + 1}`;
-                this.employeeList.push(this.employee);
+//                this.employeeList.push(this.employee);
+                this.$store.commit('addEmployee', this.employee);
                 this.employee = {};
             }
         }
@@ -88,6 +89,9 @@
         },
 
         methods: {
+            netIncome(){
+                this.$store.commit('netIncome');
+            },
 
             added(){
                 console.log('New employee added');
